@@ -1,0 +1,7 @@
+.answer-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 250px;
+  height: 50px;
+}
