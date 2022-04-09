@@ -4,7 +4,7 @@ import Question from "./Question.js";
 import Answer from "./Answer.js";
 import QuestionNumber from "../QuestionNumber.js";
 
-// copied from here: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+// Copied from here: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
 // Marked answer as useful :)
 const shuffle = (array) => {
   console.log(array);

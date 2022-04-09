@@ -1,14 +1,14 @@
 .question-container {
-  background-color: green;
-  border: 1px solid black;
-  width: 93%;
+  /* background-color: green;
+  border: 1px solid black; */
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
 }
 
 .question-box {
+
   background: #0d141c;
   border: 3px solid #ffffff;
   border-radius: 26px;

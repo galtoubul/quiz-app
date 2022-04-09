@@ -7,18 +7,9 @@
 }
 
 .question-form-and-sidebar-container {
-  background-color: brown;
-  border: 1px solid black;
+  background-color: #0d141c;
   height: 95%;
   display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-}
-
-.sidebar-container {
-  background-color: purple;
-  border: 1px solid black;
-  width: 7%;
-  display: flex;
-  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
 }

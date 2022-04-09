@@ -3,6 +3,7 @@ import "./Game.css";
 import QuestionForm from "./Question/QuestionForm.js";
 import Score from "../Score/Score";
 import GameSummary from "./GameSummary";
+import Sidebar from "./SideBar/SideBar.js";
 
 const Game = (props) => {
   const [score, setScore] = useState(0);
@@ -23,7 +24,7 @@ const Game = (props) => {
         ) : (
           <GameSummary score={score} />
         )}
-        <div className="sidebar-container"></div>
+        <Sidebar />
       </div>
     </div>
   );

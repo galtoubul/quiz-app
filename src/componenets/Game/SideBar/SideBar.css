@@ -1,0 +1,12 @@
+.sidebar-container {
+  /* background-color: #0d141c; */
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  color: white !important;
+  font-size: 20px !important;
+  font-style: normal !important;
+  font-weight: bold !important;
+  justify-content: center;
+  align-items: center;
+}
