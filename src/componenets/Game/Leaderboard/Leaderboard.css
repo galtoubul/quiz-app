@@ -1,0 +1,12 @@
+.leaderboard-container {
+  background: #42aaa3;
+  width: 93%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.first-row {
+  font-weight: bold !important;
+}
