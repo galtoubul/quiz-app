@@ -15,19 +15,7 @@ import Paper from "@mui/material/Paper";
 //   },
 // });
 
-function createData(place, name, score, date) {
-  return { place, name, score, date };
-}
-
-const rows = [
-  createData(1, "Gal Toubul", 100, "09/04/2022"),
-  createData(2, "Gal Toubul", 100, "09/04/2022"),
-  createData(3, "Gal Toubul", 100, "09/04/2022"),
-  createData(4, "Gal Toubul", 100, "09/04/2022"),
-  createData(5, "Gal Toubul", 100, "09/04/2022"),
-];
-
-const BasicTable = () => {
+const BasicTable = (props) => {
   // const classes = useStyles();
   return (
     <TableContainer sx={{ maxWidth: 450 }} component={Paper}>
@@ -55,7 +43,7 @@ const BasicTable = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {props.leaderboardRows.map((row) => (
             <TableRow
               key={row.place}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -74,10 +62,10 @@ const BasicTable = () => {
   );
 };
 
-const Leaderboard = () => {
+const Leaderboard = (props) => {
   return (
     <div className="leaderboard-container">
-      <BasicTable />
+      <BasicTable leaderboardRows={props.leaderboardRows} />
     </div>
   );
 };

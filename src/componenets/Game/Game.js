@@ -22,7 +22,10 @@ const Game = (props) => {
             setTimerKey={setTimerKey}
           />
         ) : (
-          <GameSummary score={props.score} />
+          <GameSummary
+            score={props.score}
+            addRowToLeaderBoard={props.addRowToLeaderBoard}
+          />
         )}
         {props.questionInd <= 9 ? (
           <Sidebar

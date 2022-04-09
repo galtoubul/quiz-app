@@ -30,7 +30,10 @@ const GameSummary = (props) => {
           <img src={require("./img/youGotThis.jpg")} alt="meme"></img>
         )}
       </div>
-      <LeaderBoardButton className="leaderboard-button" />
+      <LeaderBoardButton
+        className="leaderboard-button"
+        addRowToLeaderBoard={props.addRowToLeaderBoard}
+      />
     </div>
   );
 };
