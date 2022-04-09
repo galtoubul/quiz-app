@@ -1,5 +1,6 @@
 import "./GameSummary.css";
-import Confetti from "../Confetti.js";
+import Confetti from "./Confetti.js";
+import LeaderBoardButton from "./LeaderBoardButton.js";
 
 const GameSummary = (props) => {
   let summaryText;
@@ -20,13 +21,16 @@ const GameSummary = (props) => {
 
   return (
     <div className="game-summary-container">
-      <div className="final-score-container">Final Score: {props.score}</div>
-      <div className="summary-text-container">{summaryText}</div>
-      {props.score >= 30 ? (
-        <Confetti></Confetti>
-      ) : (
-        <img src={require("./img/youGotThis.jpg")} alt="meme"></img>
-      )}
+      <div className="final-score-and-summary-container">
+        <div className="final-score">Final Score: {props.score}</div>
+        <div className="summary-text">{summaryText}</div>
+        {props.score >= 30 ? (
+          <Confetti></Confetti>
+        ) : (
+          <img src={require("./img/youGotThis.jpg")} alt="meme"></img>
+        )}
+      </div>
+      <LeaderBoardButton className="leaderboard-button" />
     </div>
   );
 };

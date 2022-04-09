@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./Game.css";
 import QuestionForm from "./Question/QuestionForm.js";
-import Score from "../Score/Score";
+import Score from "./Score/Score";
 import GameSummary from "./GameSummary/GameSummary";
 import Sidebar from "./SideBar/SideBar.js";
 

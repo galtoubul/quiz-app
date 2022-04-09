@@ -2,7 +2,7 @@ import "./QuestionForm.css";
 import React from "react";
 import Question from "./Question.js";
 import Answer from "./Answer.js";
-import QuestionNumber from "../QuestionNumber.js";
+import QuestionNumber from "../QuestionNumber/QuestionNumber.js";
 
 // Copied from here: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
 // Marked answer as useful :)
