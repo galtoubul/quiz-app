@@ -18,6 +18,7 @@ const Game = (props) => {
             questionData={props.questionsData[questionInd]}
             setScore={setScore}
             setQuestionInd={setQuestionInd}
+            questionInd={questionInd}
           />
         ) : (
           <GameSummary score={score} />

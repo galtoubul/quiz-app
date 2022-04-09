@@ -2,6 +2,7 @@ import "./QuestionForm.css";
 import React from "react";
 import Question from "./Question.js";
 import Answer from "./Answer.js";
+import QuestionNumber from "../QuestionNumber.js";
 
 // copied from here: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
 // Marked answer as useful :)
@@ -57,7 +58,7 @@ const QuestionForm = (props) => {
           {renderAnswer(2)}
           {renderAnswer(3)}
         </div>
-        <div className="question-number-container"></div>
+        <QuestionNumber questionInd={props.questionInd}/>
       </div>
     </div>
   );

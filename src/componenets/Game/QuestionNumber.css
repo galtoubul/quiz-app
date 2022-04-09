@@ -1,0 +1,17 @@
+.question-number-container {
+  background-color: #0d141c;
+  height: 44px;
+  width: 800px;
+  border-radius: 26px;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+.question-number {
+  color: #ef5a7a;
+  padding-right: 20px;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: bold;
+}
