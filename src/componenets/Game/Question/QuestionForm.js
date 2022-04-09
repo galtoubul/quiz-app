@@ -37,7 +37,7 @@ const QuestionForm = (props) => {
     if (answers[i] === props.questionData["correct_answer"]) {
       props.setScore((prevScore) => prevScore + 10);
     }
-    props.setQuestionInd((prevScore) => prevScore + 1);
+    props.setQuestionInd((prevQuestionInd) => prevQuestionInd + 1);
     props.setTimerKey((prevTimerKey) => prevTimerKey + 1); // restart timer
   };
 

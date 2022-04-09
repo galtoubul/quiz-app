@@ -6,30 +6,28 @@ import GameSummary from "./GameSummary/GameSummary";
 import Sidebar from "./SideBar/SideBar.js";
 
 const Game = (props) => {
-  const [score, setScore] = useState(0);
-  const [questionInd, setQuestionInd] = useState(0);
   const [timerKey, setTimerKey] = useState(0);
 
   console.log(props.questionsData[0]);
   return (
     <div className="main-screen">
-      <Score score={score} />
+      <Score score={props.score} />
       <div className="question-form-and-sidebar-container">
-        {questionInd <= 9 ? (
+        {props.questionInd <= 9 ? (
           <QuestionForm
-            questionData={props.questionsData[questionInd]}
-            setScore={setScore}
-            setQuestionInd={setQuestionInd}
-            questionInd={questionInd}
+            questionData={props.questionsData[props.questionInd]}
+            setScore={props.setScore}
+            setQuestionInd={props.setQuestionInd}
+            questionInd={props.questionInd}
             setTimerKey={setTimerKey}
           />
         ) : (
-          <GameSummary score={score} />
+          <GameSummary score={props.score} />
         )}
-        {questionInd <= 9 ? (
+        {props.questionInd <= 9 ? (
           <Sidebar
             timerKey={timerKey}
-            setQuestionInd={setQuestionInd}
+            setQuestionInd={props.setQuestionInd}
             setTimerKey={setTimerKey}
           />
         ) : null}
