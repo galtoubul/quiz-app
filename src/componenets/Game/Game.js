@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./Game.css";
 import QuestionForm from "./Question/QuestionForm.js";
 import Score from "../Score/Score";
-import GameSummary from "./GameSummary";
+import GameSummary from "./GameSummary/GameSummary";
 import Sidebar from "./SideBar/SideBar.js";
 
 const Game = (props) => {
@@ -26,11 +26,13 @@ const Game = (props) => {
         ) : (
           <GameSummary score={score} />
         )}
-        <Sidebar
-          timerKey={timerKey}
-          setQuestionInd={setQuestionInd}
-          setTimerKey={setTimerKey}
-        />
+        {questionInd <= 9 ? (
+          <Sidebar
+            timerKey={timerKey}
+            setQuestionInd={setQuestionInd}
+            setTimerKey={setTimerKey}
+          />
+        ) : null}
       </div>
     </div>
   );
