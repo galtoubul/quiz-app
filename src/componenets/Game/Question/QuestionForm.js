@@ -36,8 +36,8 @@ const QuestionForm = (props) => {
   const handleClick = (i) => {
     if (answers[i] === props.questionData["correct_answer"]) {
       props.setScore((prevScore) => prevScore + 10);
-    } 
-    
+    }
+    props.setQuestionInd((prevScore) => prevScore + 1);
   };
 
   const renderAnswer = (i) => {
