@@ -1,0 +1,13 @@
+.score-container {
+  display: flex;
+  align-items: center;
+  background-color: #0d141c;
+  height: 5%;
+}
+.score {
+  color: #ef5a7a;
+  padding-left: 15px;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: bold;
+}

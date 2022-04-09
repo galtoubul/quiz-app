@@ -33,8 +33,15 @@ const QuestionForm = (props) => {
   answers = shuffle(answers);
   answers.map((elem) => parseEntities(elem));
 
+  const handleClick = (i) => {
+    if (answers[i] === props.questionData["correct_answer"]) {
+      props.setScore((prevScore) => prevScore + 10);
+    } 
+    
+  };
+
   const renderAnswer = (i) => {
-    return <Answer answerText={answers[i]} />;
+    return <Answer onClick={() => handleClick(i)} answerText={answers[i]} />;
   };
 
   console.log(props);

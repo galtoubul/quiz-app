@@ -1,23 +1,34 @@
 import "./App.css";
-import QuestionForm from "./componenets/Question/QuestionForm.js";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import NavBar from "./componenets/NavBar/NavBar";
+import Game from "./componenets/Game/Game";
 
-const App = (props) => {
+const App = () => {
+  const [questionsData, setQuestionsData] = useState([]);
+  const [isDataRetrieved, setIsDataRetrieved] = useState(false);
+
+  async function retrieveData() {
+    const response = await axios.get("https://opentdb.com/api.php?amount=10");
+    setQuestionsData(response["data"]["results"]);
+  }
+
+  useEffect(() => {
+    setIsDataRetrieved(false);
+    axios.get("https://opentdb.com/api.php?amount=10").then((response) => {
+      setQuestionsData(response["data"]["results"]);
+      setIsDataRetrieved(true);
+    });
+  }, []);
+
   return (
     <div className="main-container">
-      <div className="nav-bar"></div>
-      <div className="main-screen">
-        <div className="score-container"></div>
-        <div className="game-container">
-          <QuestionForm />
-          {/* <div className="question-container">
-            <div className="question-text"></div>
-            <div className="answers-row-1"></div>
-            <div className="answers-row-2"></div>
-            <div className="question-number-container"></div>
-          </div> */}
-          <div className="sidebar-container"></div>
-        </div>
-      </div>
+      <NavBar onClick={retrieveData} />
+      {isDataRetrieved ? (
+        <Game questionsData={questionsData} />
+      ) : (
+        <div>loading</div>
+      )}
     </div>
   );
 };

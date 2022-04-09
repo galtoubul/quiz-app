@@ -1,0 +1,21 @@
+.nav-bar-container {
+  background-color: #0d141c;
+  border-right: 1.5px solid white;
+  width: 7%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 80px;
+}
+
+.button-container {
+  height: 20%;
+  width: 20%;
+  background-color: aqua;
+}
+
+.play-img:hover,
+.leaderboard-img:hover {
+  cursor: pointer;
+}
