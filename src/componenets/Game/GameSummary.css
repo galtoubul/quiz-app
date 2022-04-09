@@ -1,7 +1,5 @@
 .game-summary-container {
-  background-color: green;
-  border: 1px solid black;
-  min-width: 93%;
+  background-color: #0d141c;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -9,11 +7,11 @@
 }
 
 .game-summary {
+  height: 390px;
+  width: 800px;
   background: #0d141c;
   border: 3px solid #ffffff;
   border-radius: 26px;
-  width: 50%;
-  height: 50%;
   color: #ef5a7a;
   font-size: 20px;
   font-style: normal;

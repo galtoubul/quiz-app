@@ -32,17 +32,22 @@ const QuestionForm = (props) => {
     props.questionData["correct_answer"]
   );
   answers = shuffle(answers);
-  answers.map((elem) => parseEntities(elem));
 
   const handleClick = (i) => {
     if (answers[i] === props.questionData["correct_answer"]) {
       props.setScore((prevScore) => prevScore + 10);
     }
     props.setQuestionInd((prevScore) => prevScore + 1);
+    props.setTimerKey((prevTimerKey) => prevTimerKey + 1); // restart timer
   };
 
   const renderAnswer = (i) => {
-    return <Answer onClick={() => handleClick(i)} answerText={answers[i]} />;
+    return (
+      <Answer
+        onClick={() => handleClick(i)}
+        answerText={parseEntities(answers[i])}
+      />
+    );
   };
 
   console.log(props);
@@ -54,11 +59,13 @@ const QuestionForm = (props) => {
           {renderAnswer(0)}
           {renderAnswer(1)}
         </div>
-        <div className="answers-row-2">
-          {renderAnswer(2)}
-          {renderAnswer(3)}
-        </div>
-        <QuestionNumber questionInd={props.questionInd}/>
+        {answers.length > 2 ? (
+          <div className="answers-row-2">
+            {renderAnswer(2)}
+            {renderAnswer(3)}
+          </div>
+        ) : null}
+        <QuestionNumber questionInd={props.questionInd} />
       </div>
     </div>
   );
