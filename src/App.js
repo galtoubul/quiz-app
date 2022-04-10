@@ -56,6 +56,7 @@ const App = () => {
       let newRow = createData(playerPlace, playerName, score, getTodayDate());
       prevLeaderboardRows.splice(playerPlace - 1, 0, newRow);
       console.log(prevLeaderboardRows);
+      setIsGameMode(false);
       return prevLeaderboardRows;
     });
   };
