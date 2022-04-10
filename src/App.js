@@ -97,9 +97,7 @@ const App = () => {
           <div>loading</div>
         )
       ) : (
-        <Leaderboard
-          leaderboardRows={leaderboardRows}
-        />
+        <Leaderboard leaderboardRows={leaderboardRows} />
       )}
     </div>
   );
