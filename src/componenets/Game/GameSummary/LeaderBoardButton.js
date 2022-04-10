@@ -64,6 +64,7 @@ export default function LeaderBoardButton(props) {
               id="outlined-basic"
               placeholder="Your name"
               variant="outlined"
+              onChange={(e) => props.setPlayerName(e.target.value)}
             />
             <Button
               sx={{ width: 40 }}

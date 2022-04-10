@@ -43,19 +43,21 @@ const BasicTable = (props) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {props.leaderboardRows.map((row) => (
-            <TableRow
-              key={row.place}
-              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">
-                {row.place}
-              </TableCell>
-              <TableCell align="right">{row.name}</TableCell>
-              <TableCell align="right">{row.score}</TableCell>
-              <TableCell align="right">{row.date}</TableCell>
-            </TableRow>
-          ))}
+          {props.leaderboardRows.length
+            ? props.leaderboardRows.map((row) => (
+                <TableRow
+                  key={row.place}
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
+                  <TableCell component="th" scope="row">
+                    {row.place}
+                  </TableCell>
+                  <TableCell align="right">{row.name}</TableCell>
+                  <TableCell align="right">{row.score}</TableCell>
+                  <TableCell align="right">{row.date}</TableCell>
+                </TableRow>
+              ))
+            : null}
         </TableBody>
       </Table>
     </TableContainer>

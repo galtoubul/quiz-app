@@ -9,22 +9,52 @@ function createData(place, name, score, date) {
   return { place, name, score, date };
 }
 
+// Copied from here: https://stackoverflow.com/questions/1531093/how-do-i-get-the-current-date-in-javascript
+// Marked answer as useful :)
+const getTodayDate = () => {
+  let today = new Date();
+  let dd = String(today.getDate()).padStart(2, "0");
+  let mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+  let yyyy = today.getFullYear();
+
+  today = dd + "/" + mm + "/" + yyyy;
+  return today;
+};
+
 const App = () => {
   const [questionsData, setQuestionsData] = useState([]);
   const [isDataRetrieved, setIsDataRetrieved] = useState(false);
   const [isGameMode, setIsGameMode] = useState(true);
   const [questionInd, setQuestionInd] = useState(0);
   const [score, setScore] = useState(0);
-  const [leaderboardRows, setleaderboardRows] = useState([
-    createData(1, "Gal Toubul", 100, "09/04/2022"),
-  ]);
+  const [playerName, setPlayerName] = useState("guest");
+  const [leaderboardRows, setleaderboardRows] = useState([]);
+
+  const getPlayerPlace = () => {
+    for (let i = 0; i < leaderboardRows.length; i++) {
+      if (score > leaderboardRows[i]["score"]) {
+        console.log(
+          `bigger than | score = ${score} | leaderboardRows[i]["score"] = ${leaderboardRows[i]["score"]}`
+        );
+        for (let j = i; j < leaderboardRows.length; j++) {
+          leaderboardRows[j]["place"] += 1;
+        }
+        return i + 1;
+      } else {
+        console.log(
+          `score = ${score} | leaderboardRows[i]["score"] = ${leaderboardRows[i]["score"]}`
+        );
+      }
+    }
+    return leaderboardRows.length + 1;
+  };
 
   const addRowToLeaderBoard = () => {
     setleaderboardRows((prevLeaderboardRows) => {
       console.log(prevLeaderboardRows);
-      prevLeaderboardRows = prevLeaderboardRows.concat([
-        createData(2, "gal", 23, "1/1/1"),
-      ]);
+      let playerPlace = getPlayerPlace();
+      let newRow = createData(playerPlace, playerName, score, getTodayDate());
+      prevLeaderboardRows.splice(playerPlace - 1, 0, newRow);
       console.log(prevLeaderboardRows);
       return prevLeaderboardRows;
     });
@@ -60,6 +90,7 @@ const App = () => {
             score={score}
             setScore={setScore}
             addRowToLeaderBoard={addRowToLeaderBoard}
+            setPlayerName={setPlayerName}
           />
         ) : (
           <div>loading</div>

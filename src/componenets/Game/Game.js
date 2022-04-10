@@ -25,6 +25,7 @@ const Game = (props) => {
           <GameSummary
             score={props.score}
             addRowToLeaderBoard={props.addRowToLeaderBoard}
+            setPlayerName={props.setPlayerName}
           />
         )}
         {props.questionInd <= 9 ? (

@@ -33,6 +33,7 @@ const GameSummary = (props) => {
       <LeaderBoardButton
         className="leaderboard-button"
         addRowToLeaderBoard={props.addRowToLeaderBoard}
+        setPlayerName={props.setPlayerName}
       />
     </div>
   );
