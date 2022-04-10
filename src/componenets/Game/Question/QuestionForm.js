@@ -3,6 +3,8 @@ import React from "react";
 import Question from "./Question.js";
 import Answer from "./Answer.js";
 import QuestionNumber from "../QuestionNumber/QuestionNumber.js";
+import { useCallback, useRef } from "react";
+import ReactCanvasConfetti from "react-canvas-confetti";
 
 // Copied from here: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
 // Marked answer as useful :)
@@ -27,6 +29,15 @@ const shuffle = (array) => {
 const parseEntities = (txt) =>
   new DOMParser().parseFromString(txt, "text/html").body.innerText;
 
+const canvasStyles = {
+  position: "fixed",
+  pointerEvents: "none",
+  width: "100%",
+  height: "100%",
+  top: 0,
+  left: 0,
+};
+
 const QuestionForm = (props) => {
   let answers = props.questionData["incorrect_answers"].concat(
     props.questionData["correct_answer"]
@@ -46,17 +57,63 @@ const QuestionForm = (props) => {
     }
   }
 
-  const handleClick = (i) => {
+  const refAnimationInstance = useRef(null);
+
+  const getInstance = useCallback((instance) => {
+    refAnimationInstance.current = instance;
+  }, []);
+
+  const makeShot = useCallback((particleRatio, opts) => {
+    refAnimationInstance.current &&
+      refAnimationInstance.current({
+        ...opts,
+        origin: { y: 0.7 },
+        particleCount: Math.floor(200 * particleRatio),
+      });
+  }, []);
+
+  const confettiFire = useCallback(() => {
+    makeShot(0.25, {
+      spread: 50,
+      startVelocity: 55,
+    });
+
+    // makeShot(0.2, {
+    //   spread: 60,
+    // });
+
+    // makeShot(0.35, {
+    //   spread: 100,
+    //   decay: 0.91,
+    //   scalar: 0.8,
+    // });
+
+    // makeShot(0.1, {
+    //   spread: 120,
+    //   startVelocity: 25,
+    //   decay: 0.92,
+    //   scalar: 1.2,
+    // });
+
+    // makeShot(0.1, {
+    //   spread: 120,
+    //   startVelocity: 45,
+    // });
+  }, [makeShot]);
+
+  function handleClick(i) {
     if (answers[i] === props.questionData["correct_answer"]) {
       props.setScore((prevScore) => prevScore + 10);
+      confettiFire();
     }
     props.setQuestionInd((prevQuestionInd) => prevQuestionInd + 1);
     props.setTimerKey((prevTimerKey) => prevTimerKey + 1); // restart timer
-  };
+  }
 
   const renderAnswer = (i) => {
     return (
       <Answer
+        id={`answer${i}`}
         onClick={() => handleClick(i)}
         answerText={parseEntities(answers[i])}
         minHeight={minHeight}
@@ -80,6 +137,7 @@ const QuestionForm = (props) => {
           </div>
         ) : null}
         <QuestionNumber questionInd={props.questionInd} />
+        <ReactCanvasConfetti refConfetti={getInstance} style={canvasStyles} />
       </div>
     </div>
   );
