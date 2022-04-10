@@ -18,9 +18,9 @@ import Paper from "@mui/material/Paper";
 const BasicTable = (props) => {
   // const classes = useStyles();
   return (
-    <TableContainer sx={{ maxWidth: 450 }} component={Paper}>
+    <TableContainer sx={{ maxWidth: 600, maxHeight: 600 }} component={Paper}>
       <Table
-        sx={{ maxWidth: 450 }}
+        sx={{ maxWidth: 600, maxHeight: 600 }}
         aria-label="simple table"
         options={{
           rowStyle: {
