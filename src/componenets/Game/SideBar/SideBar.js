@@ -9,7 +9,7 @@ const SideBar = (props) => {
 
   return (
     <div className="sidebar-container">
-      <CountdownCircleTimer
+      {/* <CountdownCircleTimer
         className="timer"
         key={props.timerKey}
         size={105}
@@ -20,7 +20,7 @@ const SideBar = (props) => {
         colorsTime={[7, 0]}
       >
         {({ remainingTime }) => remainingTime}
-      </CountdownCircleTimer>
+      </CountdownCircleTimer> */}
     </div>
   );
 };

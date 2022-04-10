@@ -21,8 +21,8 @@ const Answer = (props) => {
       <ThemeProvider theme={theme}>
         <Button
           sx={{
-            minWidth: 250,
-            minHeight: 50,
+            minWidth: props.minWidth,
+            minHeight: props.minHeight,
             border: 1,
             borderColor: "primary.main",
             fontSize: 15,

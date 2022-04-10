@@ -99,7 +99,6 @@ const App = () => {
       ) : (
         <Leaderboard
           leaderboardRows={leaderboardRows}
-          setIsGameMode={setIsGameMode}
         />
       )}
     </div>

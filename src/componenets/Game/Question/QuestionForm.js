@@ -33,6 +33,19 @@ const QuestionForm = (props) => {
   );
   answers = shuffle(answers);
 
+  let minHeight = 50;
+  let minWidth = 250;
+  for (const ans of answers) {
+    if (ans.length >= 50) {
+      minWidth = 750;
+      break;
+    }
+    if (ans.length >= 24) {
+      minHeight = 66.5;
+      break;
+    }
+  }
+
   const handleClick = (i) => {
     if (answers[i] === props.questionData["correct_answer"]) {
       props.setScore((prevScore) => prevScore + 10);
@@ -46,21 +59,22 @@ const QuestionForm = (props) => {
       <Answer
         onClick={() => handleClick(i)}
         answerText={parseEntities(answers[i])}
+        minHeight={minHeight}
+        minWidth={minWidth}
       />
     );
   };
 
-  console.log(props);
   return (
     <div className="question-container">
       <div className="question-box">
         <Question questionText={parseEntities(props.questionData.question)} />
-        <div className="answers-row-1">
+        <div className={minWidth == 250 ? "answers-row-1" : "answers-col-1"}>
           {renderAnswer(0)}
           {renderAnswer(1)}
         </div>
         {answers.length > 2 ? (
-          <div className="answers-row-2">
+          <div className={minWidth == 250 ? "answers-row-2" : "answers-col-2"}>
             {renderAnswer(2)}
             {renderAnswer(3)}
           </div>
